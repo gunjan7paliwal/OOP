@@ -1,0 +1,13 @@
+Shishir 9829174069 delhi 1 1 0
+Vikram 9999223410 patna 1 0 0
+Gunjan 7763201245 nagpur 0 1 0
+Manish 8912434302 sikar 1 0 0
+Prateek 9009879103 kolhapur 1 1 0
+Chakka 9666666666 karnal 0 0 1
+mehran 8675309 california 1 1 0
+tiamet 433123450 melbourne 1 0 0
+ronaldo 7777766666 madiera 0 0 0
+shishir2 9591104646 nitk 1 1 0
+raj 1234567890 mumbai 1 2 0
+Ved 9876543210 nagpur 1 1 0
+manish 7894512569 jaipur 0 0 1
