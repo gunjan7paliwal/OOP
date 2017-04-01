@@ -76,9 +76,9 @@ void phonebook(){
     fin.close();
 }
 void init(){
-    cout<<"\t\t\t\t"<<"===========================\n";
+    cout<<"\n\n\t\t\t\t"<<"===========================\n";
     cout<<"\t\t\t\t"<<"WELCOME TO PHONE DIRECTORY\n";
-    cout<<"\t\t\t\t"<<"===========================\n";
+    cout<<"\t\t\t\t"<<"===========================\n\n\n";
     cout<<"\t\t\t\t"<<"Press Enter to continue";
     cin.ignore();
     std::system("clear");
@@ -131,8 +131,13 @@ void searchCname(int x){		//Search According to Name
 			}}break;
 		default: break;		
 	}
-	cout<<"Press Enter to continue :\n";
-	cin.ignore();
+	char y;
+	cout<<"Do you want to continue (y/n):\n";
+	cin>>y;
+	if(y=='y'){
+		system("clear");
+	}
+	else exit(0);
 	return;
 }
 
@@ -266,13 +271,13 @@ void searchBL(){
 }
 
 void search(){
-    cout<<"\t\t\t\t"<<"1.Random Search:\n";
-    cout<<"\t\t\t\t"<<"2.Search favorites:\n";
-    cout<<"\t\t\t\t"<<"3.Search speedDials:\n";
-    cout<<"\t\t\t\t"<<"4.Search BlackList:\n";
+    cout<<"\t\t\t\t"<<"1.Random Search:\n\n";
+    cout<<"\t\t\t\t"<<"2.Search favorites:\n\n";
+    cout<<"\t\t\t\t"<<"3.Search speedDials:\n\n";
+    cout<<"\t\t\t\t"<<"4.Search BlackList:\n\n";
 
     sbegin:
-    cout<<"\t\t\t\t"<<"Enter choice:";
+    cout<<"\t\t\t\t"	<<"Enter choice:";
     int choice;
     cin>>choice;
 
