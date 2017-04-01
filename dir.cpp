@@ -81,7 +81,7 @@ void init(){
     cout<<"\t\t\t\t"<<"===========================\n";
     cout<<"\t\t\t\t"<<"Press Enter to continue";
     cin.ignore();
-    system("CLS");
+    std::system("clear");
 }
 int flag=0;
 void searchCname(int x){		//Search According to Name
@@ -131,6 +131,8 @@ void searchCname(int x){		//Search According to Name
 			}}break;
 		default: break;		
 	}
+	cout<<"Press Enter to continue :\n";
+	cin.ignore();
 	return;
 }
 
@@ -200,7 +202,15 @@ void searchCcity(int x){		//Search According to City
 						cout<<setw(70)<<"Address : "<<(*z)->address()<<"\n"<<endl;		
 					}
 				}}break;
+				default: break;	
 	}
+	char y;
+	cout<<"Do you want to continue (y/n):\n";
+	cin>>y;
+	if(y=='y'){
+		system("clear");
+	}
+	else exit(0);
 	return;
 }
 
@@ -262,7 +272,7 @@ void search(){
     cout<<"\t\t\t\t"<<"4.Search BlackList:\n";
 
     sbegin:
-    cout<<setw(70)<<"Enter choice:";
+    cout<<"\t\t\t\t"<<"Enter choice:";
     int choice;
     cin>>choice;
 
@@ -280,16 +290,16 @@ void addContact(){
     int temp1,temp2;
     string address;
 
-    cout<<setw(70)<<"enter name:";
+    cout<<"\t\t\t\t"<<"enter name:";
     cin>>name;
-    cout<<setw(70)<<"enter phone number:";
+    cout<<"\t\t\t\t"<<"enter phone number:";
     cin>>number;
-    cout<<setw(70)<<"enter address:";
+    cout<<"\t\t\t\t"<<"enter address:";
     cin>>address;
 
-    cout<<setw(70)<<"Add to Favorites?";
+    cout<<"\t\t\t\t"<<"Add to Favorites?";
     cin>>temp1;
-    cout<<setw(70)<<"Add to SpeedDial?";
+    cout<<"\t\t\t\t"<<"Add to SpeedDial?";
     cin>>temp2;
 
     fout<<endl<<name<<" "<<number<<" "<<address<<" "<<temp1<<" "<<temp2<<" "<<0;
@@ -327,9 +337,8 @@ int main(){
     init();
 
     fout.open("phonebook.txt",ios::app|ios::out);
-	cout<<(*B1.begin())->name();
-    while(1){
-        system("CLS");
+	    while(1){
+        std::system("clear");
         int choice=MainMenu();
         switch(choice){
             case 1:search();break;
