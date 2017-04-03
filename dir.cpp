@@ -114,7 +114,28 @@ void init(){
     cin.ignore();
     std::system("clear");
 }
+void action(int choice,int option){
+
+                cout<<"\t\t\t\t1. Call\n \t\t\t\t 2. Message\n";
+                cin>>choice;
+                if(choice==1)
+                {
+
+                    cout<<"\t\t\t\tEnter 1 - "<<S.size()<<endl;
+                    cin>>option;
+                    cout<<" \t\t\t\t Calling "<<S[option-1]->name()<<endl;
+                }
+                else if(choice==2)
+                {
+                    cout<<"\t\t\t\tEnter 1 - "<<S.size()<<endl;
+                    cin>>option;
+                    cout<<" \t\t\t\t Messaging "<<S[option-1]->name()<<endl;
+
+                }
+return;
+}
 int flag=0;
+
 void searchCname(int x){		//Search According to Name
 	string a;
 	int flag=0,option,choice;
@@ -138,28 +159,9 @@ void searchCname(int x){		//Search According to Name
 			}
 			if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+                    cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t 2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
-
+                    action(choice,option);
 			}break;
 		case 2: {vector<favorite*>::iterator z;
 		flag=0;
@@ -177,27 +179,9 @@ void searchCname(int x){		//Search According to Name
 
 			if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n  \t\t\t\t2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
+                action(choice,option);
 
 			}break;
 		case 3: {vector<speedDial*>::iterator z; flag=0;
@@ -215,27 +199,9 @@ void searchCname(int x){		//Search According to Name
 
 			if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+                cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n\t\t\t\t 2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
+                action(choice,option);
 
 			}break;
 		case 4: {vector<BlackList*>::iterator z; flag=0;
@@ -253,28 +219,10 @@ void searchCname(int x){		//Search According to Name
 
 			if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+                cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
-
+                action(choice,option);    
+        
 			}break;
 		default: break;
 	}
@@ -291,7 +239,7 @@ void searchCname(int x){		//Search According to Name
 
 void searchCcity(int x){		//Search According to City
 	string a;
-	int flag=0,choice,option;
+	int flag=0,choice,option,cnt=0;
 	cout<<"Enter city :\n";
 	cin>>a;
 	switch(x){
@@ -300,8 +248,18 @@ void searchCcity(int x){		//Search According to City
                 {
 					if (icompare((*z)->address(),a))
 					{
-
-						cout<<setw(70)<<"Name : "<<(*z)->name()<<endl;
+						cnt++;
+					}
+				}
+				cout<<"There are "<<cnt<<" people from nagpur in your contacts :)\n"<<endl;
+				cnt=0;		
+				for(z=C1.begin();z<C1.end()-1;z++)
+                {
+					if (icompare((*z)->address(),a))
+					{
+						cnt++;
+						cout<<"["<<cnt<<"]";
+						cout<<setw(67)<<"Name : "<<(*z)->name()<<endl;
 						cout<<setw(70)<<"Number : "<<(*z)->number()<<endl;
 						cout<<setw(70)<<"Address : "<<(*z)->address()<<"\n"<<endl;
 						S.push_back(new SearchTrack((*z)->name(),(*z)->number(),(*z)->address()));
@@ -311,27 +269,9 @@ void searchCcity(int x){		//Search According to City
 
 				if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
+                action(choice,option);
 
 			}break;
 
@@ -339,8 +279,17 @@ void searchCcity(int x){		//Search According to City
 				for(z=F1.begin();z<F1.end()-1;z++)
                 {
 					if (icompare((*z)->address(),a))
+					{cnt++;
+					}
+				}
+				cout<<"There are "<<cnt<<" people from nagpur in your favorites :)\n"<<endl;
+				cnt=0;
+				for(z=F1.begin();z<F1.end()-1;z++)
+                {
+					if (icompare((*z)->address(),a))
 					{
-
+						cnt++;
+						cout<<"["<<cnt<<"]";
 						cout<<setw(70)<<"Name : "<<(*z)->name()<<endl;
 						cout<<setw(70)<<"Number : "<<(*z)->number()<<endl;
 						cout<<setw(70)<<"Address : "<<(*z)->address()<<"\n"<<endl;
@@ -351,35 +300,27 @@ void searchCcity(int x){		//Search According to City
 
 				if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
+                action(choice,option);
 
 			}break;
+
 		case 3: {vector<speedDial*>::iterator z;
 				for(z=S1.begin();z<S1.end()-1;z++)
                 {
 					if (icompare((*z)->address(),a))
+					{cnt++;
+					}
+				}
+				cout<<"There are "<<cnt<<" people from nagpur in your speedDial :)\n"<<endl;
+				cnt=0;
+				for(z=S1.begin();z<S1.end()-1;z++)
+                {
+					if (icompare((*z)->address(),a))
 					{
-
+						cnt++;
+						cout<<"["<<cnt<<"]";
 						cout<<setw(70)<<"Name : "<<(*z)->name()<<endl;
 						cout<<setw(70)<<"Number : "<<(*z)->number()<<endl;
 						cout<<setw(70)<<"Address : "<<(*z)->address()<<"\n"<<endl;
@@ -388,37 +329,30 @@ void searchCcity(int x){		//Search According to City
 					}
 				}
 
+				
 				if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
+                action(choice,option);
 
 			}break;
+
 		case 4: {vector<BlackList*>::iterator z;
 				for(z=B1.begin();z<B1.end()-1;z++)
                 {
 					if (icompare((*z)->address(),a))
+					{cnt++;
+					}
+				}
+				cout<<"There are "<<cnt<<" people from nagpur in your BlackList :)\n"<<endl;
+				cnt=0;
+				for(z=B1.begin();z<B1.end()-1;z++)
+                {
+					if (icompare((*z)->address(),a))
 					{
-
+						cnt++;
+						cout<<"["<<cnt<<"]";
 						cout<<setw(70)<<"Name : "<<(*z)->name()<<endl;
 						cout<<setw(70)<<"Number : "<<(*z)->number()<<endl;
 						cout<<setw(70)<<"Address : "<<(*z)->address()<<"\n"<<endl;
@@ -427,31 +361,15 @@ void searchCcity(int x){		//Search According to City
 					}
 				}
 
+				
 				if(!flag)
             {
-
-
-                    cout<<"\t\t\t\t"<<a<<" not found :)\n\n";
+				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t2. Message\n";
-                cin>>choice;
-                if(choice==1)
-                {
-
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Calling "<<S[option]->name()<<endl;
-                }
-                else if(choice==2)
-                {
-                    cout<<"\t\t\t\tEnter 0 - "<<S.size()-1<<endl;
-                    cin>>option;
-                    cout<<" \t\t\t\t Messaging "<<S[option]->name()<<endl;
-
-                }
+                action(choice,option);
 
 			}break;
+
 				default: break;
 	}
 	S.clear();
