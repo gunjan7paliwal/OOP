@@ -116,8 +116,13 @@ void init(){
 }
 void action(int choice,int option){
 
-                cout<<"\t\t\t\t1. Call\n \t\t\t\t 2. Message\n";
-                cin>>choice;
+                while(cout<<"\t\t\t\t1. Call\n \t\t\t\t 2. Message\n"&&!(cin>>choice))
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    cout<<"Invalid Input\n";
+
+                }
                 if(choice==1)
                 {
 
@@ -137,10 +142,11 @@ return;
 int flag=0;
 
 void searchCname(int x){		//Search According to Name
-	string a;
+	char a[100];
 	int flag=0,option,choice;
 	cout<<"Enter name to search :\n";
-	cin>>a;
+	cin.ignore();
+	gets(a);
 	switch(x){
 		case 1: {vector<contact*>::iterator z;
 		flag=0;
@@ -221,8 +227,8 @@ void searchCname(int x){		//Search According to Name
             {
                 cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
                     return;}
-                action(choice,option);    
-        
+                action(choice,option);
+
 			}break;
 		default: break;
 	}
@@ -238,10 +244,11 @@ void searchCname(int x){		//Search According to Name
 }
 
 void searchCcity(int x){		//Search According to City
-	string a;
+	char a[100];
 	int flag=0,choice,option,cnt=0;
 	cout<<"Enter city :\n";
-	cin>>a;
+	cin.ignore();
+	gets(a);
 	switch(x){
 		case 1:	{vector<contact*>::iterator z;
 				for(z=C1.begin();z<C1.end()-1;z++)
@@ -252,7 +259,7 @@ void searchCcity(int x){		//Search According to City
 					}
 				}
 				cout<<"There are "<<cnt<<" people from nagpur in your contacts :)\n"<<endl;
-				cnt=0;		
+				cnt=0;
 				for(z=C1.begin();z<C1.end()-1;z++)
                 {
 					if (icompare((*z)->address(),a))
@@ -329,7 +336,7 @@ void searchCcity(int x){		//Search According to City
 					}
 				}
 
-				
+
 				if(!flag)
             {
 				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
@@ -361,7 +368,7 @@ void searchCcity(int x){		//Search According to City
 					}
 				}
 
-				
+
 				if(!flag)
             {
 				cout<<"\t\t\t\t"<<a<<" not found :(\n\n";
@@ -441,9 +448,11 @@ void search(){
     cout<<"\t\t\t\t"<<"4.Search BlackList:\n\n";
 
     sbegin:
-    cout<<"\t\t\t\t"	<<"Enter choice:";
-    int choice;
-    cin>>choice;
+         int choice;
+  cout<<"\t\t\t\t"	<<"Enter choice:\n";
+  cin>>choice;
+
+
 
     switch(choice){
         case 1:searchContacts();break;
@@ -454,17 +463,19 @@ void search(){
     }
 }
 void addContact(){
-    string name;
+   char  name[100];
     string number;
     int temp1,temp2;
-    string address;
+    char  address[100];
 
     cout<<"\t\t\t\t"<<"enter name:";
-    cin>>name;
+    cin.ignore();
+    gets(name);
     cout<<"\t\t\t\t"<<"enter phone number:";
     cin>>number;
     cout<<"\t\t\t\t"<<"enter address:";
-    cin>>address;
+    cin.ignore();
+    gets(address);
 
     cout<<"\t\t\t\t"<<"Add to Favorites?";
     cin>>temp1;
@@ -495,8 +506,9 @@ int MainMenu(){
     cout<<"				"<<"5.EXIT DIRECTORY\n\n";
 
     int choice;
-    cout<<setw(45)<<"enter your choice: ";
-    cin>>choice;
+  cout<<setw(45)<<"enter your choice: \n";
+ cin>>choice;
+
 
     return choice;
 }
@@ -508,6 +520,7 @@ int main(){
     fout.open("phonebook.txt",ios::app|ios::out);
 	    while(1){
         std::system("clear");
+
         int choice=MainMenu();
         switch(choice){
             case 1:search();break;
