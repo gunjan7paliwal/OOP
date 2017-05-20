@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+	int query;
+	int SP=0;// SP=1 denotes that snake is still passing
+	char prev;
+	cin>>query;
+	int size;
+	for(int i=0;i<query;i++){
+		cin>>size;
+		char *Report;
+		for(int j=0;j<size;j++){
+			cin>>Report[j];
+		}
+		prev=Report[0];
+		if((prev=='H'||prev=='T')&&size==1)
+		{
+			cout<<"Invalid"<<endl;
+			goto end;
+			//continue;
+		}
+		for(int j=1;j<size;j++){
+			if(Report[j]==prev&&prev!='.')
+			{
+				cout<<"Invalid"<<endl;
+				goto end;
+				//continue;		
+			}
+			if(Report[j]=='H'||Report[j]=='T')
+				prev=Report[j];
+
+		}
+		if(prev=='T'||prev=='.')
+			cout<<"Valid"<<endl;
+		else 
+			cout<<"Invalid"<<endl;
+	end:
+	;
+	}
+	return 0;
+} 
